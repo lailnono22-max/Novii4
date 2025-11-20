@@ -1,0 +1,125 @@
+import logo from '@assets/generated_images/novii_app_logo.png';
+import coffeeImg from '@assets/generated_images/coffee_shop_interior.png';
+import cityImg from '@assets/generated_images/city_skyline_sunset.png';
+import fashionImg from '@assets/generated_images/fashion_photography.png';
+import abstractImg from '@assets/generated_images/abstract_3d_art.png';
+import femaleAvatar from '@assets/generated_images/female_avatar.png';
+import maleAvatar from '@assets/generated_images/male_avatar.png';
+import artisticAvatar from '@assets/generated_images/artistic_avatar.png';
+
+export interface User {
+  id: string;
+  username: string;
+  name: string;
+  avatar: string;
+  bio?: string;
+  followers?: number;
+  following?: number;
+  postsCount?: number;
+  verified?: boolean;
+}
+
+export interface Post {
+  id: string;
+  user: User;
+  image: string;
+  caption: string;
+  likes: number;
+  comments: number;
+  timestamp: string;
+  likedByMe: boolean;
+}
+
+export interface Story {
+  id: string;
+  user: User;
+  hasUnseen: boolean;
+}
+
+export const currentUser: User = {
+  id: 'u1',
+  username: 'novii_official',
+  name: 'Novii - Official',
+  avatar: logo,
+  bio: 'المنصة الرسمية لشبكة نوفي الاجتماعية 🌟\nOfficial Novii Social Network Platform\n#SocialMedia #Verified',
+  followers: 125000,
+  following: 0,
+  postsCount: 156,
+  verified: true,
+};
+
+export const users: User[] = [
+  currentUser,
+  {
+    id: 'u2',
+    username: 'sarah_styles',
+    name: 'Sarah Jenkins',
+    avatar: femaleAvatar,
+    verified: false,
+  },
+  {
+    id: 'u3',
+    username: 'mike_urban',
+    name: 'Mike Chen',
+    avatar: maleAvatar,
+    verified: false,
+  },
+  {
+    id: 'u4',
+    username: 'alex_design',
+    name: 'Alex Morgan',
+    avatar: artisticAvatar,
+    verified: false,
+  }
+];
+
+export const stories: Story[] = [
+  { id: 's1', user: users[1], hasUnseen: true },
+  { id: 's2', user: users[2], hasUnseen: true },
+  { id: 's3', user: users[3], hasUnseen: false },
+  { id: 's4', user: users[1], hasUnseen: false }, // duplicate user for scroll demo
+  { id: 's5', user: users[2], hasUnseen: false },
+];
+
+export const posts: Post[] = [
+  {
+    id: 'p1',
+    user: users[1],
+    image: fashionImg,
+    caption: 'Sunday vibes 🌿 #minimal #fashion',
+    likes: 342,
+    comments: 12,
+    timestamp: '2h ago',
+    likedByMe: false,
+  },
+  {
+    id: 'p2',
+    user: users[2],
+    image: cityImg,
+    caption: 'Chasing sunsets in the concrete jungle 🌇',
+    likes: 891,
+    comments: 45,
+    timestamp: '5h ago',
+    likedByMe: true,
+  },
+  {
+    id: 'p3',
+    user: users[3],
+    image: abstractImg,
+    caption: 'Experimenting with 3D forms today. Thoughts?',
+    likes: 1204,
+    comments: 89,
+    timestamp: '1d ago',
+    likedByMe: true,
+  },
+  {
+    id: 'p4',
+    user: currentUser,
+    image: coffeeImg,
+    caption: 'Morning fuel. Can\'t start without it.',
+    likes: 56,
+    comments: 4,
+    timestamp: '2d ago',
+    likedByMe: false,
+  },
+];
